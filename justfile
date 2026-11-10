@@ -2,7 +2,7 @@
 set dotenv-load
 set shell := ["bash", "-euc"]
 
-# Afficher les recettes disponibles
+[private]
 default:
     @just --list --unsorted
 
