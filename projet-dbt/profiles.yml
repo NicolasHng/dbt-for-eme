@@ -1,0 +1,13 @@
+# dbt lit ce fichier dans le dossier courant : lance les commandes depuis projet-dbt/.
+formation:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: localhost
+      port: "{{ env_var('PG_PORT', '5433') | int }}"
+      user: emeline
+      password: "{{ env_var('EMELINE_PASSWORD', 'formation') }}"
+      dbname: formation
+      schema: emeline
+      threads: 4

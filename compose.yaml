@@ -1,0 +1,37 @@
+name: formation-dbt
+
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: formation
+      POSTGRES_USER: plateforme
+      POSTGRES_PASSWORD: ${PLATEFORME_PASSWORD}
+      EMELINE_PASSWORD: ${EMELINE_PASSWORD}
+    ports:
+      - "${PG_PORT:-5433}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./initdb:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U plateforme -d formation"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  app:
+    image: ghcr.io/nicolashng/dbt-for-eme:2026.11.10-e480f64
+    environment:
+      DATABASE_URL: postgresql://plateforme:${PLATEFORME_PASSWORD}@postgres:5432/formation
+      NOTIFS_MIN_S: ${NOTIFS_MIN_S:-480}
+      NOTIFS_MAX_S: ${NOTIFS_MAX_S:-1200}
+    volumes:
+      - ./projet-dbt:/projet-dbt:ro
+    ports:
+      - "${APP_PORT:-8080}:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  pgdata:

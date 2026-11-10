@@ -1,0 +1,12 @@
+[project]
+name = "projet-dbt"
+version = "0.1.0"
+description = "Le projet dbt de la formation"
+requires-python = ">=3.13"
+dependencies = [
+    "dbt-core>=1.10",
+    "dbt-postgres>=1.9",
+]
+
+[tool.uv]
+package = false
