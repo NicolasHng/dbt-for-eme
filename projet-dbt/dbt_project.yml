@@ -9,3 +9,7 @@ macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
 
 clean-targets: ["target", "dbt_packages"]
+
+# Ne pas modifier ni supprimer : la plateforme de cours lit ce journal pour corriger tes exercices.
+flags:
+  log_format_file: json
