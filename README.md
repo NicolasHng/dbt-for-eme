@@ -1,12 +1,12 @@
 # dbt : zero to hero
 
-Prérequis : WSL (Ubuntu), Docker, just, et un jeton d'accès GitHub classique (droits `repo` et `read:packages`).
+Prérequis : WSL (Ubuntu), Docker et just.
 Depuis le terminal Ubuntu :
 
 ```bash
-git clone https://github.com/NicolasHng/dbt-for-eme.git ~/formation-dbt   # mot de passe : ton jeton
+git clone https://github.com/NicolasHng/dbt-for-eme.git ~/formation-dbt
 cd ~/formation-dbt
-cp .env.example .env      # puis renseigne GITHUB_USER et GITHUB_TOKEN dans .env
+cp .env.example .env
 just demarrer
 ```
 
