@@ -20,7 +20,7 @@ services:
       retries: 10
 
   app:
-    image: ghcr.io/nicolashng/dbt-for-eme:2026.11.12-1d3d8bd
+    image: ghcr.io/nicolashng/dbt-for-eme:2026.11.12-fa6e5f2
     environment:
       DATABASE_URL: postgresql://plateforme:${PLATEFORME_PASSWORD}@postgres:5432/formation
       NOTIFS_MIN_S: ${NOTIFS_MIN_S:-480}
